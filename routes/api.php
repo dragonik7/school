@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => '/students'], function () {
-    Route::get('/', [StudentsController::class, 'index']);
-    Route::get('/{student}', [StudentsController::class, 'show']);
-    Route::post('/', [StudentsController::class, 'store']);
-    Route::patch('/{student}', [StudentsController::class, 'update']);
-    Route::delete('/{student}', [StudentsController::class, 'destroy']);
+    Route::get('/', [StudentController::class, 'index']);
+    Route::get('/{student}', [StudentController::class, 'show']);
+    Route::post('/', [StudentController::class, 'store']);
+    Route::patch('/{student}', [StudentController::class, 'update']);
+    Route::delete('/{student}', [StudentController::class, 'destroy']);
+});
+Route::group(['prefix' => '/groups'], function () {
+    Route::get('/', [GroupController::class, 'index']);
 });

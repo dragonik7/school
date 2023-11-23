@@ -7,17 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
 
 	public function up() {
-		Schema::create('group_lectures', function (Blueprint $table) {
+		Schema::create('schedules', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('lecture_id')->constrained('lectures')->cascadeOnDelete();
 			$table->foreignId('group_id')->constrained('groups')->cascadeOnDelete();
-			$table->smallInteger('lecture_order');
+			$table->integer('lecture_order');
 			$table->timestamps();
             $table->unique(['lecture_id', 'group_id']);
 		});
 	}
 
 	public function down() {
-		Schema::dropIfExists('group_lectures');
+		Schema::dropIfExists('schedules');
 	}
 };

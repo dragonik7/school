@@ -12,9 +12,9 @@ class Group extends Model {
 	use HasFactory;
 
     public function students(): HasMany {
-        return $this->hasMany(Students::class, 'group_id', 'id');
+        return $this->hasMany(Student::class, 'group_id', 'id');
     }
     public function lectures(): BelongsToMany{
-        return $this->belongsToMany(Lecture::class, 'group_lectures', 'group_id', 'lecture_id');
+        return $this->belongsToMany(Lecture::class, 'schedules', 'group_id', 'lecture_id');
     }
 }

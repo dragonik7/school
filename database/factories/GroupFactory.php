@@ -10,7 +10,7 @@ class GroupFactory extends Factory {
 
 	protected $model = Group::class;
 
-	public function definition() {
+	public function definition(): array {
 		return [
 			'name'       => $this->faker->unique()->name(),
 			'created_at' => Carbon::now(),

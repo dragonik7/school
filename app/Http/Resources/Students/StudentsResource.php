@@ -6,7 +6,7 @@ use App\Http\Resources\GroupResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\Students */
+/** @mixin \App\Models\Student */
 class StudentsResource extends JsonResource {
 
     public function toArray(Request $request): array {

@@ -3,16 +3,16 @@
 namespace Database\Factories;
 
 use App\Models\Group;
-use App\Models\GroupLecture;
+use App\Models\Schedule;
 use App\Models\Lecture;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
-class GroupLectureFactory extends Factory {
+class ScheduleFactory extends Factory {
 
-	protected $model = GroupLecture::class;
+	protected $model = Schedule::class;
 
-	public function definition() {
+	public function definition(): array {
 		return [
 			'lecture_id'    => Lecture::query()->get()->random()->id,
 			'group_id'      => Group::query()->get()->random()->id,

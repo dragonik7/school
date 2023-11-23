@@ -10,7 +10,7 @@ class LectureFactory extends Factory {
 
 	protected $model = Lecture::class;
 
-	public function definition() {
+	public function definition(): array {
 		return [
 			'name'        => $this->faker->unique()->name(),
 			'description' => $this->faker->text(),
