@@ -1,66 +1,169 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel API for Student Management
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This Laravel API provides functionality for managing students, groups, and lectures. The system includes students, groups, and lectures, with relationships defined as follows:
 
-## About Laravel
+- Each student has a unique name and email.
+- Each group has a unique name.
+- Each lecture has a unique topic and a description.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## API Endpoints
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Students
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Get All Students**
+    - Endpoint: `GET /api/students`
+    - Returns a list of all students.
 
-## Learning Laravel
+2. **Get Student Information**
+    - Endpoint: `GET /api/students/{student_id}`
+    - Returns information about a specific student, including name, email, associated class, and attended lectures.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+3. **Create Student**
+    - Endpoint: `POST /api/students`
+    - Request Body:
+      ```json
+      {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "group_id": 1
+      }
+      ```
+    - Creates a new student.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+4. **Update Student**
+    - Endpoint: `PATCH /api/students/{student_id}`
+    - Request Body:
+      ```json
+      {
+        "name": "Updated Name",
+        "group_id": 2
+      }
+      ```
+    - Updates student information, including name and associated group.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+5. **Delete Student**
+    - Endpoint: `DELETE /api/students/{student_id}`
+    - Deletes a student. If the student is associated with a group, they are detached but not completely removed from the system.
 
-## Laravel Sponsors
+### Groups
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+6. **Get All Groups**
+    - Endpoint: `GET /api/groups`
+    - Returns a list of all groups.
 
-### Premium Partners
+7. **Get Group Information**
+    - Endpoint: `GET /api/groups/{group_id}`
+    - Returns information about a specific group, including name and list of students.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+8. **Get Group Study Plan**
+    - Endpoint: `GET /api/groups/{group_id}/schedule`
+    - Returns the schedule (list of lectures) for a specific group.
 
-## Contributing
+9. **Create/Update Group schedule**
+    - Endpoint: `POST /api/groups/{group_id}/study-plan`
+    - Request Body:
+      ```json
+      [
+        {
+            "lecture_id": 10,
+            "lecture_order": 5
+        },
+        {
+            "lecture_id": 13,
+            "lecture_order": 6
+        }
+      ]
+      ```
+    - Creates or updates the study plan for a group.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+10. **Create Group**
+    - Endpoint: `POST /api/groups`
+    - Request Body:
+      ```json
+      {
+        "name": "Group A"
+      }
+      ```
+    - Creates a new group.
 
-## Code of Conduct
+11. **Update Group**
+    - Endpoint: `PUT /api/groups/{group_id}`
+    - Request Body:
+      ```json
+      {
+        "name": "Updated Group Name"
+      }
+      ```
+    - Updates group information, including name.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+12. **Delete Group**
+    - Endpoint: `DELETE /api/groups/{group_id}`
+    - Deletes a group. Students associated with the group are detached but not completely removed from the system.
 
-## Security Vulnerabilities
+### Lectures
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+13. **Get All Lectures**
+    - Endpoint: `GET /api/lectures`
+    - Returns a list of all lectures.
 
-## License
+14. **Get Lecture Information**
+    - Endpoint: `GET /api/lectures/{lecture_id}`
+    - Returns information about a specific lecture, including topic, description, associated groups, and attended students.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+15. **Create Lecture**
+    - Endpoint: `POST /api/lectures`
+    - Request Body:
+      ```json
+      {
+        "name": "Topic A",
+        "description": "Description of Topic A"
+      }
+      ```
+    - Creates a new lecture.
+
+16. **Update Lecture**
+    - Endpoint: `PUT /api/lectures/{lecture_id}`
+    - Request Body:
+      ```json
+      {
+        "name": "Updated Topic",
+        "description": "Updated Description"
+      }
+      ```
+    - Updates lecture information, including topic and description.
+
+17. **Delete Lecture**
+    - Endpoint: `DELETE /api/lectures/{lecture_id}`
+    - Deletes a lecture.
+
+## Technical Requirements
+
+1. **Strict Typing**: Use strict typing throughout the application.
+2. **Controller Logic**: Keep controllers free of business logic. They should validate requests, call model or service methods, handle exceptions, and return JSON responses.
+3. **Service Layer**: Implement a service layer for complex business logic.
+4. **JSON Responses**: Return results in JSON format.
+5. **Validation**: Implement request validation using Laravel request groups.
+6. **Dependency Injection**: Utilize dependency injection in controllers and services.
+7. **Optimal Queries**: Optimize queries by using eager loading for related data.
+
+## Deployment with Laravel Sail
+
+This project can be easily deployed using Laravel Sail, a lightweight Docker development environment.
+
+### Prerequisites
+
+- Install Docker: [Docker Installation Guide](https://docs.docker.com/get-docker/)
+- Install laravel and packages:
+  ```bash
+  composer install
+  ```
+  ```bash
+  composer run post-autoload-dump
+  composer run post-create-project-cmd
+  composer run post-root-package-install
+  composer run post-update-cmd
+  ```
+  ```bash
+  sail build
+  sail up -d
+  ```

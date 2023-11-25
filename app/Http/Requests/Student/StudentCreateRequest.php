@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Students;
+namespace App\Http\Requests\Student;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 class StudentCreateRequest extends FormRequest {
 
-	public function rules() {
+	public function rules(): array {
 		return [
             'name'     => ['required', 'string', 'max:254'],
             'email'    => ['required', 'email', 'max:254'],

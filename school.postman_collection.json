@@ -1,0 +1,553 @@
+{
+	"info": {
+		"_postman_id": "8ad50397-f60a-44e7-873b-23867c8d5fc0",
+		"name": "school",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19471246"
+	},
+	"item": [
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "Get students",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/students",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get student",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/students/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"students",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "hgfdhgfd",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "afdsafdsa@mail.ru",
+									"type": "text"
+								},
+								{
+									"key": "group_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/students/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"students",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update student",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "fdasfdsah",
+									"type": "text"
+								},
+								{
+									"key": "group_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/students/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"students",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete student",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/students/10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"students",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Groups",
+			"item": [
+				{
+					"name": "Get groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/groups",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get group and students",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/groups/1/students",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"groups",
+								"1",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get group and lectures",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/groups/1/lectures",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"groups",
+								"1",
+								"lectures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update schedule",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"lecture_id\": 10,\n        \"lecture_order\": 5\n    },\n    {\n        \"lecture_id\": 13,\n        \"lecture_order\": 6\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/groups/1/schedule",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"groups",
+								"1",
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update group",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "sdf",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/groups/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"groups",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create group",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "rewrew",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/groups",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete group",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/groups/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"groups",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lectures",
+			"item": [
+				{
+					"name": "Get lectures",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/lectures",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"lectures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get lecture",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/lectures/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"lectures",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create lecture",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "dsafd",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "gfdsgfdsgfdsgfdsgbgdnbt",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/lectures/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"lectures",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update lecture",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "grshgrbshytn",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "gfsdgfdshbnbthyjuy",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/lectures/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"lectures",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete lecture",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/lectures/10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"lectures",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://172.33.0.2/api",
+			"type": "string"
+		}
+	]
+}

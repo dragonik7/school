@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Group extends Model {
 
 	use HasFactory;
+    protected $fillable = ['name'];
 
     public function students(): HasMany {
         return $this->hasMany(Student::class, 'group_id', 'id');
