@@ -157,13 +157,20 @@ This project can be easily deployed using Laravel Sail, a lightweight Docker dev
   ```bash
   composer install
   ```
+- Configure the database connection in the .env file and create bcrypt key.
   ```bash
   composer run post-autoload-dump
   composer run post-create-project-cmd
   composer run post-root-package-install
   composer run post-update-cmd
   ```
+- Build, up docker container and migrate tables
   ```bash
-  sail build
-  sail up -d
+  ./vendor/bin/sail build
+  ./vendor/bin/sail up -d
+  ./vendor/bin/sail migrate
+  ```
+- Not necessarily, you can run the seeder
+  ```bash
+  ./vendor/bin/sail migrate --seed
   ```
